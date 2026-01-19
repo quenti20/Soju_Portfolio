@@ -1,0 +1,164 @@
+{
+  "personal": {
+    "name": "Soujanya Roy",
+    "title": "Professional Animator & UI/UX Designer",
+    "tagline": "Crafting Digital Experiences Through Motion & Design",
+    "bio": "I'm a passionate animator and UI/UX designer with a keen eye for detail and a love for creating immersive digital experiences. With expertise in character design, motion graphics, and user interface design, I bring stories to life through carefully crafted visuals and seamless interactions.",
+    "email": "Soujanya@gmail.com",
+    "location": "India",
+    "avatar": "/src/images/1.jpg",
+    "resumeLink": "#"
+  },
+  "social": {
+    "twitter": "https://twitter.com/soujanyaroy",
+    "instagram": "https://instagram.com/soujanyaroy",
+    "linkedin": "https://linkedin.com/in/soujanyaroy",
+    "behance": "https://behance.net/soujanyaroy",
+    "dribbble": "https://dribbble.com/soujanyaroy",
+    "github": "https://github.com/soujanyaroy"
+  },
+  "skills": [
+    {
+      "name": "Animation",
+      "icon": "🎬",
+      "level": 95
+    },
+    {
+      "name": "Character Design",
+      "icon": "🎨",
+      "level": 90
+    },
+    {
+      "name": "UI/UX Design",
+      "icon": "✨",
+      "level": 92
+    },
+    {
+      "name": "Motion Graphics",
+      "icon": "🌟",
+      "level": 88
+    },
+    {
+      "name": "Illustration",
+      "icon": "🖼️",
+      "level": 85
+    },
+    {
+      "name": "Storyboarding",
+      "icon": "📝",
+      "level": 87
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Dr. Vane - Character Design",
+      "category": "Character Design",
+      "description": "A post-apocalyptic character design featuring Dr. Vane, a failed doctor turned survivor. The design showcases the full character development process from silhouette to final colored artwork with a complete color palette.",
+      "image": "/src/images/1.jpg",
+      "tags": ["Character Design", "Concept Art", "Digital Art"],
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Anati - Character Illustration",
+      "category": "Character Design",
+      "description": "A whimsical character design of Anati, a friendly duck-human hybrid. This playful character showcases creativity in combining human and animal elements with a warm, approachable personality.",
+      "image": "/src/images/2.jpg",
+      "tags": ["Character Design", "Illustration", "Fantasy"],
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Enchanted Cave - Background Design",
+      "category": "Background Art",
+      "description": "A beautifully crafted cave interior environment design featuring warm earthly tones, magical artifacts, and atmospheric lighting. Perfect for animation or game environments.",
+      "image": "/src/images/3.jpg",
+      "tags": ["Background Art", "Environment Design", "Digital Painting"],
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Delphina - Character Design",
+      "category": "Character Design",
+      "description": "Meet Delphina, a gentle dragon who collects teacups. This character design tells a story of finding treasure in moments of connection rather than material wealth.",
+      "image": "/src/images/4.jpg",
+      "tags": ["Character Design", "Storytelling", "Fantasy"],
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Will - Character Design",
+      "category": "Character Design",
+      "description": "Will is a gentle, curious village boy who befriends a wolf. This character design explores themes of empathy, trust, and understanding through a charming visual narrative.",
+      "image": "/src/images/5.jpg",
+      "tags": ["Character Design", "Storytelling", "Children's Art"],
+      "featured": false
+    }
+  ],
+  "services": [
+    {
+      "title": "Character Design",
+      "description": "Creating unique, memorable characters with personality and depth for games, animation, and brand mascots.",
+      "icon": "👤"
+    },
+    {
+      "title": "UI/UX Design",
+      "description": "Designing intuitive, beautiful interfaces that enhance user experience and drive engagement.",
+      "icon": "📱"
+    },
+    {
+      "title": "Animation",
+      "description": "Bringing stories to life through 2D animation, motion graphics, and dynamic visual storytelling.",
+      "icon": "🎬"
+    },
+    {
+      "title": "Illustration",
+      "description": "Creating stunning digital illustrations for books, marketing materials, and editorial content.",
+      "icon": "🎨"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior UI/UX Designer & Animator",
+      "company": "Creative Studios",
+      "period": "2022 - Present",
+      "description": "Leading design initiatives for mobile and web applications, creating animation assets for marketing campaigns."
+    },
+    {
+      "role": "Freelance Character Designer",
+      "company": "Self-Employed",
+      "period": "2020 - 2022",
+      "description": "Designed characters for indie games, children's books, and animated shorts."
+    },
+    {
+      "role": "Junior Animator",
+      "company": "Animation House",
+      "period": "2018 - 2020",
+      "description": "Created 2D animations for commercials and explainer videos."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Alex Chen",
+      "role": "Creative Director",
+      "company": "BrandForge",
+      "text": "Soujanya's work exceeded our expectations. Her character designs brought our brand mascot to life in ways we never imagined possible.",
+      "avatar": ""
+    },
+    {
+      "name": "Maya Patel",
+      "role": "Product Manager",
+      "company": "TechStart",
+      "text": "Working with Soujanya on our app redesign was a fantastic experience. Her UI/UX skills combined with animation expertise made our product stand out.",
+      "avatar": ""
+    }
+  ],
+  "navigation": [
+    { "name": "Home", "path": "#home" },
+    { "name": "About", "path": "#about" },
+    { "name": "Works", "path": "#works" },
+    { "name": "Services", "path": "#services" },
+    { "name": "Contact", "path": "#contact" }
+  ]
+}
