@@ -6,7 +6,7 @@
     "bio": "I'm a passionate animator and UI/UX designer with a keen eye for detail and a love for creating immersive digital experiences. With expertise in character design, motion graphics, and user interface design, I bring stories to life through carefully crafted visuals and seamless interactions.",
     "email": "Soujanya@gmail.com",
     "location": "India",
-    "avatar": "https://drive.google.com/file/d/1Lc9SE3tyEPSjsDTnE9yEwcLmf2nynBXQ/view?usp=drive_link",
+    "avatar": "/images/1.jpg",
     "resumeLink": "#"
   },
   "social": {
@@ -55,7 +55,7 @@
       "title": "Dr. Vane - Character Design",
       "category": "Character Design",
       "description": "A post-apocalyptic character design featuring Dr. Vane, a failed doctor turned survivor. The design showcases the full character development process from silhouette to final colored artwork with a complete color palette.",
-      "image": "/src/images/1.jpg",
+      "image": "/images/1.jpg",
       "tags": ["Character Design", "Concept Art", "Digital Art"],
       "featured": true
     },
@@ -64,7 +64,7 @@
       "title": "Anati - Character Illustration",
       "category": "Character Design",
       "description": "A whimsical character design of Anati, a friendly duck-human hybrid. This playful character showcases creativity in combining human and animal elements with a warm, approachable personality.",
-      "image": "https://drive.google.com/file/d/1rUTQ9VOb87CDUkTYjTaFsrMOnI28sibc/view?usp=sharing",
+      "image": "/images/2.jpg",
       "tags": ["Character Design", "Illustration", "Fantasy"],
       "featured": true
     },
@@ -73,7 +73,7 @@
       "title": "Enchanted Cave - Background Design",
       "category": "Background Art",
       "description": "A beautifully crafted cave interior environment design featuring warm earthly tones, magical artifacts, and atmospheric lighting. Perfect for animation or game environments.",
-      "image": "/src/images/3.jpg",
+      "image": "/images/3.jpg",
       "tags": ["Background Art", "Environment Design", "Digital Painting"],
       "featured": true
     },
@@ -82,7 +82,7 @@
       "title": "Delphina - Character Design",
       "category": "Character Design",
       "description": "Meet Delphina, a gentle dragon who collects teacups. This character design tells a story of finding treasure in moments of connection rather than material wealth.",
-      "image": "/src/images/4.jpg",
+      "image": "/images/4.jpg",
       "tags": ["Character Design", "Storytelling", "Fantasy"],
       "featured": false
     },
@@ -91,7 +91,7 @@
       "title": "Will - Character Design",
       "category": "Character Design",
       "description": "Will is a gentle, curious village boy who befriends a wolf. This character design explores themes of empathy, trust, and understanding through a charming visual narrative.",
-      "image": "/src/images/5.jpg",
+      "image": "/images/5.jpg",
       "tags": ["Character Design", "Storytelling", "Children's Art"],
       "featured": false
     }
