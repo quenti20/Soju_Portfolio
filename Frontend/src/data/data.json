@@ -6,7 +6,7 @@
     "bio": "I'm a passionate animator and UI/UX designer with a keen eye for detail and a love for creating immersive digital experiences. With expertise in character design, motion graphics, and user interface design, I bring stories to life through carefully crafted visuals and seamless interactions.",
     "email": "Soujanya@gmail.com",
     "location": "India",
-    "avatar": "/src/images/1.jpg",
+    "avatar": "https://drive.google.com/file/d/1Lc9SE3tyEPSjsDTnE9yEwcLmf2nynBXQ/view?usp=drive_link",
     "resumeLink": "#"
   },
   "social": {
@@ -64,7 +64,7 @@
       "title": "Anati - Character Illustration",
       "category": "Character Design",
       "description": "A whimsical character design of Anati, a friendly duck-human hybrid. This playful character showcases creativity in combining human and animal elements with a warm, approachable personality.",
-      "image": "/src/images/2.jpg",
+      "image": "https://drive.google.com/file/d/1rUTQ9VOb87CDUkTYjTaFsrMOnI28sibc/view?usp=sharing",
       "tags": ["Character Design", "Illustration", "Fantasy"],
       "featured": true
     },
