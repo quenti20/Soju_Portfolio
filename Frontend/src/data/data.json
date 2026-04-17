@@ -1,9 +1,9 @@
 {
   "personal": {
     "name": "Soujanya Roy",
-    "title": "Aspiring Animator & UI/UX Designer",
-    "tagline": "Passionate about crafting digital experiences through motion, design, and storytelling.",
-    "bio": "I am a creative and detail-oriented visual designer seeking internship opportunities to kickstart my career. With a strong foundation in character design, motion graphics, and user interfaces, I am eager to learn from industry professionals, bring imaginative concepts to life, and contribute to dynamic creative teams.",
+    "title": "Aspiring Animator & Graphic Designer",
+    "tagline": "Passionate about crafting digital experiences through motion, graphic design, and storytelling.",
+    "bio": "I am a creative and detail-oriented visual designer seeking internship opportunities to kickstart my career. With a strong foundation in character design, motion graphics, and graphic design, I am eager to learn from industry professionals, bring imaginative concepts to life, and contribute to dynamic creative teams.",
     "email": "soujanyaroy15@gmail.com",
     "location": "India",
     "avatar": "/images/1.jpg",
@@ -17,7 +17,7 @@
   "skills": [
     { "name": "Animation", "icon": "🎬", "level": 90 },
     { "name": "Character Design", "icon": "🎨", "level": 85 },
-    { "name": "UI/UX Design", "icon": "✨", "level": 88 },
+    { "name": "Graphic Design", "icon": "✒️", "level": 88 },
     { "name": "Motion Graphics", "icon": "🌟", "level": 80 },
     { "name": "Illustration", "icon": "🖼️", "level": 85 },
     { "name": "Storyboarding", "icon": "📝", "level": 82 }
@@ -76,9 +76,9 @@
       "icon": "👤"
     },
     {
-      "title": "UI/UX Design",
-      "description": "Designing intuitive, beautiful interfaces that enhance user experience and drive seamless engagement.",
-      "icon": "📱"
+      "title": "Graphic Design",
+      "description": "Crafting impactful visual identities, marketing materials, and digital graphics that communicate compelling brand stories.",
+      "icon": "📐"
     },
     {
       "title": "Animation",

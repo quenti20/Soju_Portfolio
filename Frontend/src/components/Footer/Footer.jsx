@@ -25,7 +25,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-zinc-400 mb-6 max-w-sm leading-relaxed">
-              Aspiring Animator & UI/UX Designer eager to craft digital experiences through motion and design.
+              Aspiring Animator & Graphic Designer eager to craft digital experiences through visual storytelling and design.
             </p>
             <div className="flex gap-3">
               {Object.entries(data.social).map(([platform, url]) => (
