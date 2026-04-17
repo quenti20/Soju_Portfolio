@@ -26,11 +26,44 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setSubmitted(false), 3000);
+
+    try {
+      // Sending data as JSON for cleaner integration with controlled forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          // Fetching the access key from the .env file
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: "Portfolio Contact Form" // Optional: helps identify where the email came from
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        // Clear the form
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        // Reset the success state after 3 seconds
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        console.error("Submission Error:", result);
+        alert("There was an issue sending your message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+      alert("Network error. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialIcons = {

@@ -22,13 +22,6 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const stats = [
-    { value: '5+', label: 'Years Experience' },
-    { value: '50+', label: 'Projects Completed' },
-    { value: '30+', label: 'Happy Clients' },
-    { value: '100%', label: 'Satisfaction' }
-  ];
-
   return (
     <section
       id="home"
@@ -57,7 +50,7 @@ const Hero = () => {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-violet-500/10 border border-violet-500/20">
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-          <span className="text-sm font-medium text-violet-300">Available for freelance work</span>
+          <span className="text-sm font-medium text-violet-300">Seeking Internship Opportunities</span>
         </div>
 
         {/* Main Heading */}
@@ -79,7 +72,7 @@ const Hero = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 sm:mb-20 px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <a
             href="#works"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-full shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 transition-all duration-300"
@@ -99,18 +92,6 @@ const Hero = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </a>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                {stat.value}
-              </div>
-              <div className="text-xs sm:text-sm text-zinc-500">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </div>
 

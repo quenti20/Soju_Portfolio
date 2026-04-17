@@ -31,7 +31,6 @@ const About = () => {
           {/* Left - Image */}
           <div className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="relative max-w-md mx-auto lg:max-w-none">
-              {/* Main Image */}
               <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
                 <img
                   src={data.personal.avatar}
@@ -39,32 +38,6 @@ const About = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-              </div>
-
-              {/* Floating Card 1 */}
-              <div className="absolute -right-4 top-1/4 bg-zinc-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-xl hidden sm:block">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center text-2xl">
-                    🎨
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-white">5+</div>
-                    <div className="text-xs text-zinc-400">Years Experience</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Card 2 */}
-              <div className="absolute -left-4 bottom-1/4 bg-zinc-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-xl hidden sm:block">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center text-2xl">
-                    ✨
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-white">50+</div>
-                    <div className="text-xs text-zinc-400">Projects Done</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -83,7 +56,7 @@ const About = () => {
               <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
                 Creative
               </span>{' '}
-              Who Loves What They Do
+              Eager to Make an Impact
             </h2>
 
             {/* Bio */}
@@ -93,7 +66,7 @@ const About = () => {
 
             {/* Skills */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-              {data.skills.map((skill, index) => (
+              {data.skills.map((skill) => (
                 <div
                   key={skill.name}
                   className="bg-zinc-900/50 border border-white/5 rounded-xl p-4 hover:border-violet-500/30 hover:bg-zinc-900 transition-all duration-300"

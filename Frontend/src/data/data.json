@@ -1,53 +1,26 @@
 {
   "personal": {
     "name": "Soujanya Roy",
-    "title": "Professional Animator & UI/UX Designer",
-    "tagline": "Crafting Digital Experiences Through Motion & Design",
-    "bio": "I'm a passionate animator and UI/UX designer with a keen eye for detail and a love for creating immersive digital experiences. With expertise in character design, motion graphics, and user interface design, I bring stories to life through carefully crafted visuals and seamless interactions.",
-    "email": "Soujanya@gmail.com",
+    "title": "Aspiring Animator & UI/UX Designer",
+    "tagline": "Passionate about crafting digital experiences through motion, design, and storytelling.",
+    "bio": "I am a creative and detail-oriented visual designer seeking internship opportunities to kickstart my career. With a strong foundation in character design, motion graphics, and user interfaces, I am eager to learn from industry professionals, bring imaginative concepts to life, and contribute to dynamic creative teams.",
+    "email": "soujanyaroy15@gmail.com",
     "location": "India",
     "avatar": "/images/1.jpg",
     "resumeLink": "#"
   },
   "social": {
-    "twitter": "https://twitter.com/soujanyaroy",
-    "instagram": "https://instagram.com/soujanyaroy",
-    "linkedin": "https://linkedin.com/in/soujanyaroy",
-    "behance": "https://behance.net/soujanyaroy",
-    "dribbble": "https://dribbble.com/soujanyaroy",
-    "github": "https://github.com/soujanyaroy"
+    "instagram": "https://www.instagram.com/pikadoesart",
+    "linkedin": "https://www.linkedin.com/in/soujanya-roy-19b365393/",
+    "behance": "https://www.behance.net/soujanya"
   },
   "skills": [
-    {
-      "name": "Animation",
-      "icon": "🎬",
-      "level": 95
-    },
-    {
-      "name": "Character Design",
-      "icon": "🎨",
-      "level": 90
-    },
-    {
-      "name": "UI/UX Design",
-      "icon": "✨",
-      "level": 92
-    },
-    {
-      "name": "Motion Graphics",
-      "icon": "🌟",
-      "level": 88
-    },
-    {
-      "name": "Illustration",
-      "icon": "🖼️",
-      "level": 85
-    },
-    {
-      "name": "Storyboarding",
-      "icon": "📝",
-      "level": 87
-    }
+    { "name": "Animation", "icon": "🎬", "level": 90 },
+    { "name": "Character Design", "icon": "🎨", "level": 85 },
+    { "name": "UI/UX Design", "icon": "✨", "level": 88 },
+    { "name": "Motion Graphics", "icon": "🌟", "level": 80 },
+    { "name": "Illustration", "icon": "🖼️", "level": 85 },
+    { "name": "Storyboarding", "icon": "📝", "level": 82 }
   ],
   "projects": [
     {
@@ -99,12 +72,12 @@
   "services": [
     {
       "title": "Character Design",
-      "description": "Creating unique, memorable characters with personality and depth for games, animation, and brand mascots.",
+      "description": "Creating unique, memorable characters with personality and depth for games, animation, and brand storytelling.",
       "icon": "👤"
     },
     {
       "title": "UI/UX Design",
-      "description": "Designing intuitive, beautiful interfaces that enhance user experience and drive engagement.",
+      "description": "Designing intuitive, beautiful interfaces that enhance user experience and drive seamless engagement.",
       "icon": "📱"
     },
     {
@@ -114,51 +87,15 @@
     },
     {
       "title": "Illustration",
-      "description": "Creating stunning digital illustrations for books, marketing materials, and editorial content.",
+      "description": "Crafting stunning digital illustrations for editorial content, concept art, and visual narratives.",
       "icon": "🎨"
-    }
-  ],
-  "experience": [
-    {
-      "role": "Senior UI/UX Designer & Animator",
-      "company": "Creative Studios",
-      "period": "2022 - Present",
-      "description": "Leading design initiatives for mobile and web applications, creating animation assets for marketing campaigns."
-    },
-    {
-      "role": "Freelance Character Designer",
-      "company": "Self-Employed",
-      "period": "2020 - 2022",
-      "description": "Designed characters for indie games, children's books, and animated shorts."
-    },
-    {
-      "role": "Junior Animator",
-      "company": "Animation House",
-      "period": "2018 - 2020",
-      "description": "Created 2D animations for commercials and explainer videos."
-    }
-  ],
-  "testimonials": [
-    {
-      "name": "Alex Chen",
-      "role": "Creative Director",
-      "company": "BrandForge",
-      "text": "Soujanya's work exceeded our expectations. Her character designs brought our brand mascot to life in ways we never imagined possible.",
-      "avatar": ""
-    },
-    {
-      "name": "Maya Patel",
-      "role": "Product Manager",
-      "company": "TechStart",
-      "text": "Working with Soujanya on our app redesign was a fantastic experience. Her UI/UX skills combined with animation expertise made our product stand out.",
-      "avatar": ""
     }
   ],
   "navigation": [
     { "name": "Home", "path": "#home" },
     { "name": "About", "path": "#about" },
     { "name": "Works", "path": "#works" },
-    { "name": "Services", "path": "#services" },
+    { "name": "Expertise", "path": "#services" },
     { "name": "Contact", "path": "#contact" }
   ]
 }
