@@ -11,7 +11,7 @@ import {
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-[#0a0a0f] noise-overlay">
+    <div className="relative min-h-screen bg-[#0a0a0f]">
       {/* Navigation */}
       <Navbar />
       

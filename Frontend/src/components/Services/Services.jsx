@@ -22,9 +22,9 @@ const Services = () => {
       ref={sectionRef}
       className="relative py-20 md:py-28 lg:py-32 bg-zinc-950 overflow-hidden"
     >
-      {/* Borders */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+      {/* Shimmer line dividers */}
+      <div className="absolute top-0 left-0 right-0 shimmer-line" />
+      <div className="absolute bottom-0 left-0 right-0 shimmer-line" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -47,13 +47,13 @@ const Services = () => {
           {data.services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative p-6 sm:p-8 bg-zinc-900/30 border border-white/5 rounded-2xl hover:border-violet-500/30 hover:bg-zinc-900/50 transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`group relative p-6 sm:p-8 bg-zinc-900/30 border border-white/5 rounded-2xl hover:bg-zinc-900/50 transition-all duration-500 gradient-border-hover ${
+                isVisible ? 'animate-fade-up' : 'opacity-0'
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * 100 + 200}ms` }}
             >
               {/* Icon */}
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center text-2xl sm:text-3xl mb-5 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-violet-500/30 transition-all duration-300">
                 {service.icon}
               </div>
 
@@ -65,8 +65,8 @@ const Services = () => {
                 {service.description}
               </p>
 
-              {/* Number */}
-              <div className="absolute top-6 right-6 sm:top-8 sm:right-8 text-5xl sm:text-6xl font-bold text-zinc-800/30 group-hover:text-violet-500/10 transition-colors">
+              {/* Number — subtle parallax on hover */}
+              <div className="absolute top-6 right-6 sm:top-8 sm:right-8 text-5xl sm:text-6xl font-bold text-zinc-800/30 group-hover:text-violet-500/10 group-hover:-translate-y-1 transition-all duration-500">
                 {String(index + 1).padStart(2, '0')}
               </div>
             </div>
@@ -74,15 +74,15 @@ const Services = () => {
         </div>
 
         {/* CTA */}
-        <div className={`text-center transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-block p-[1px] rounded-2xl bg-gradient-to-r from-violet-500 via-purple-500 to-violet-500">
+        <div className={`text-center transition-all duration-700 ${isVisible ? 'animate-fade-up delay-600' : 'opacity-0'}`}>
+          <div className="inline-block p-[1px] rounded-2xl bg-gradient-to-r from-violet-500 via-purple-500 to-violet-500 animate-gradient-shift" style={{ backgroundSize: '200% 200%' }}>
             <div className="px-6 sm:px-8 py-5 sm:py-6 rounded-2xl bg-zinc-950">
               <p className="text-base sm:text-xl text-white mb-4">
                 Looking for a creative intern? Let's connect!
               </p>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-full hover:opacity-90 hover:shadow-lg hover:shadow-violet-500/30 active:scale-95 transition-all duration-300"
               >
                 Start a Conversation
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

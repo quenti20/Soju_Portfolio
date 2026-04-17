@@ -28,10 +28,11 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left - Image */}
+          {/* Left - Image with floating animation */}
           <div className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="relative max-w-md mx-auto lg:max-w-none">
-              <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
+              {/* Main Image — gentle float */}
+              <div className={`relative aspect-square rounded-3xl overflow-hidden border border-white/10 animate-soft-glow ${isVisible ? 'animate-float-gentle' : ''}`}>
                 <img
                   src={data.personal.avatar}
                   alt={data.personal.name}
@@ -64,19 +65,22 @@ const About = () => {
               {data.personal.bio}
             </p>
 
-            {/* Skills */}
+            {/* Skills — staggered entrance */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-              {data.skills.map((skill) => (
+              {data.skills.map((skill, index) => (
                 <div
                   key={skill.name}
-                  className="bg-zinc-900/50 border border-white/5 rounded-xl p-4 hover:border-violet-500/30 hover:bg-zinc-900 transition-all duration-300"
+                  className={`bg-zinc-900/50 border border-white/5 rounded-xl p-4 hover:border-violet-500/30 hover:bg-zinc-900 transition-all duration-300 gradient-border-hover ${
+                    isVisible ? 'animate-fade-up' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${300 + index * 100}ms` }}
                 >
                   <div className="text-2xl mb-2">{skill.icon}</div>
                   <div className="text-sm font-medium text-white mb-2">{skill.name}</div>
                   <div className="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
-                      style={{ width: isVisible ? `${skill.level}%` : '0%' }}
+                      className={`h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000 ${isVisible ? 'animate-progress-glow' : ''}`}
+                      style={{ width: isVisible ? `${skill.level}%` : '0%', transitionDelay: `${400 + index * 100}ms` }}
                     />
                   </div>
                 </div>
@@ -86,10 +90,10 @@ const About = () => {
             {/* Resume Button */}
             <a
               href={data.personal.resumeLink}
-              download="Soujanya_roy_resume.pdf" // Add this line
-              target="_blank" // Add this line as a fallback
+              download="Soujanya_roy_resume.pdf"
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 text-white font-medium rounded-full hover:border-zinc-500 hover:bg-white/5 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 text-white font-medium rounded-full hover:border-violet-500/50 hover:bg-white/5 hover:shadow-lg hover:shadow-violet-500/10 active:scale-95 transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

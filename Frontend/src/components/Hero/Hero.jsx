@@ -1,8 +1,39 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import data from '../../data/data.json';
+
+const FloatingShape = lazy(() => import('./FloatingShape'));
+
+const useCountUp = (end, duration = 2000, start = false) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    let startTime = null;
+    const numericEnd = parseInt(end);
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * numericEnd));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [start, end, duration]);
+  return count;
+};
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [showCanvas, setShowCanvas] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    // Delay 3D canvas load for faster initial paint
+    const timer = setTimeout(() => {
+      if (window.innerWidth >= 768) setShowCanvas(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -21,6 +52,13 @@ const Hero = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const stats = [
+    { value: '5', suffix: '+', label: 'Years Experience' },
+    { value: '50', suffix: '+', label: 'Projects Completed' },
+    { value: '30', suffix: '+', label: 'Happy Clients' },
+    { value: '100', suffix: '%', label: 'Satisfaction' }
+  ];
 
   return (
     <section
@@ -41,20 +79,30 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-transparent to-zinc-950" />
       </div>
 
+      {/* Animated gradient mesh */}
+      <div className="absolute inset-0 z-0 opacity-30 animate-gradient-shift bg-gradient-to-br from-violet-900/20 via-transparent to-purple-900/20" style={{ backgroundSize: '200% 200%' }} />
+
       {/* Ambient Glow */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
 
+      {/* 3D Floating Shape — lazy loaded, hidden on mobile */}
+      {showCanvas && (
+        <Suspense fallback={null}>
+          <FloatingShape />
+        </Suspense>
+      )}
+
       {/* Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-violet-500/10 border border-violet-500/20">
+        <div className={`inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-violet-500/10 border border-violet-500/20 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}>
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           <span className="text-sm font-medium text-violet-300">Seeking Internship Opportunities</span>
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+        <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 ${isVisible ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
           <span className="text-white block sm:inline">Hi, I'm </span>
           <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-violet-400 bg-clip-text text-transparent">
             {data.personal.name.split(' ')[0]}
@@ -62,20 +110,20 @@ const Hero = () => {
         </h1>
 
         {/* Title */}
-        <p className="text-xl sm:text-2xl md:text-3xl text-zinc-300 font-medium mb-4">
+        <p className={`text-xl sm:text-2xl md:text-3xl text-zinc-300 font-medium mb-4 ${isVisible ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
           {data.personal.title}
         </p>
 
         {/* Tagline */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-zinc-500 mb-10 leading-relaxed px-4">
+        <p className={`max-w-2xl mx-auto text-base sm:text-lg text-zinc-500 mb-10 leading-relaxed px-4 ${isVisible ? 'animate-fade-up delay-300' : 'opacity-0'}`}>
           {data.personal.tagline}
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+        <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 px-4 ${isVisible ? 'animate-fade-up delay-400' : 'opacity-0'}`}>
           <a
             href="#works"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-full shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-full shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 active:scale-95 transition-all duration-300"
           >
             <span>View My Work</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,13 +133,20 @@ const Hero = () => {
           
           <a
             href="#contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent border-2 border-zinc-700 text-white font-semibold rounded-full hover:border-zinc-500 hover:bg-white/5 transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent border-2 border-zinc-700 text-white font-semibold rounded-full hover:border-violet-500/50 hover:bg-white/5 hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300"
           >
             <span>Get In Touch</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </a>
+        </div>
+
+        {/* Animated Stats */}
+        <div className={`mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 ${isVisible ? 'animate-fade-up delay-500' : 'opacity-0'}`}>
+          {stats.map((stat, index) => (
+            <StatItem key={index} stat={stat} isVisible={isVisible} delay={index * 150} />
+          ))}
         </div>
       </div>
 
@@ -102,6 +157,27 @@ const Hero = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const StatItem = ({ stat, isVisible, delay }) => {
+  const [startCount, setStartCount] = useState(false);
+  const count = useCountUp(stat.value, 2000, startCount);
+
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => setStartCount(true), delay + 600);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, delay]);
+
+  return (
+    <div className="text-center">
+      <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent mb-2">
+        {count}{stat.suffix}
+      </div>
+      <div className="text-xs sm:text-sm text-zinc-500">{stat.label}</div>
+    </div>
   );
 };
 

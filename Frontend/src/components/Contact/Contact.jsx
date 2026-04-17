@@ -28,7 +28,6 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Sending data as JSON for cleaner integration with controlled forms
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -36,13 +35,12 @@ const Contact = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          // Fetching the access key from the .env file
           access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          from_name: "Portfolio Contact Form" // Optional: helps identify where the email came from
+          from_name: "Portfolio Contact Form"
         }),
       });
 
@@ -50,9 +48,7 @@ const Contact = () => {
 
       if (result.success) {
         setSubmitted(true);
-        // Clear the form
         setFormData({ name: '', email: '', subject: '', message: '' });
-        // Reset the success state after 3 seconds
         setTimeout(() => setSubmitted(false), 3000);
       } else {
         console.error("Submission Error:", result);
@@ -73,6 +69,8 @@ const Contact = () => {
     behance: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 2.138 1.59 3.037 3.182 3.037 1.45 0 2.453-.673 2.844-1.616l1.73.608zM20.45 12.3c-.072-1.453-.831-2.459-2.457-2.459-1.477 0-2.416.858-2.551 2.459h5.008zM9.5 12.5c0 1.172-.617 1.972-1.69 2.323 1.375.316 2.074 1.261 2.074 2.565 0 2.147-1.592 3.112-4.254 3.112H0V8h5.5c2.44 0 4 1.101 4 3.5v1zm-6.096-.428h2.316c1.022 0 1.575-.447 1.575-1.294 0-.9-.574-1.278-1.596-1.278H3.404v2.572zm0 5.378h2.654c1.135 0 1.774-.543 1.774-1.495 0-.938-.663-1.446-1.796-1.446H3.404v2.941z"/></svg>,
     dribbble: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87z"/></svg>
   };
+
+  const inputClasses = "w-full px-4 py-3 bg-zinc-800/50 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 input-glow transition-all duration-300";
 
   return (
     <section
@@ -104,7 +102,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div className={`lg:col-span-2 space-y-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             {/* Email */}
-            <div className="p-5 sm:p-6 bg-zinc-900/50 border border-white/5 rounded-2xl hover:border-violet-500/30 transition-colors">
+            <div className="p-5 sm:p-6 bg-zinc-900/50 border border-white/5 rounded-2xl hover:border-violet-500/30 transition-all duration-300 gradient-border-hover">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,7 +119,7 @@ const Contact = () => {
             </div>
 
             {/* Location */}
-            <div className="p-5 sm:p-6 bg-zinc-900/50 border border-white/5 rounded-2xl">
+            <div className="p-5 sm:p-6 bg-zinc-900/50 border border-white/5 rounded-2xl gradient-border-hover">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center flex-shrink-0">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,7 +144,7 @@ const Contact = () => {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-xl bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-violet-500/20 hover:text-white hover:scale-110 transition-all duration-200"
+                    className="w-11 h-11 rounded-xl bg-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-violet-500/20 hover:text-white hover:scale-110 hover:shadow-lg hover:shadow-violet-500/20 transition-all duration-200"
                   >
                     {socialIcons[platform]}
                   </a>
@@ -169,7 +167,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 bg-zinc-800/50 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all"
+                    className={inputClasses}
                   />
                 </div>
                 <div>
@@ -182,7 +180,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 bg-zinc-800/50 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all"
+                    className={inputClasses}
                   />
                 </div>
               </div>
@@ -197,7 +195,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="Project Inquiry"
-                  className="w-full px-4 py-3 bg-zinc-800/50 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all"
+                  className={inputClasses}
                 />
               </div>
 
@@ -211,7 +209,7 @@ const Contact = () => {
                   required
                   rows={5}
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 bg-zinc-800/50 border border-white/10 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all resize-none"
+                  className={`${inputClasses} resize-none`}
                 />
               </div>
 
@@ -221,7 +219,7 @@ const Contact = () => {
                 className={`w-full py-4 rounded-xl font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 ${
                   submitted
                     ? 'bg-green-600'
-                    : 'bg-gradient-to-r from-violet-600 to-purple-600 hover:opacity-90 shadow-lg shadow-violet-500/25'
+                    : 'bg-gradient-to-r from-violet-600 to-purple-600 hover:opacity-90 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 active:scale-[0.98]'
                 } ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isSubmitting ? (
