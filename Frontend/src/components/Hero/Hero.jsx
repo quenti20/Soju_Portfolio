@@ -3,24 +3,6 @@ import data from '../../data/data.json';
 
 const FloatingShape = lazy(() => import('./FloatingShape'));
 
-const useCountUp = (end, duration = 2000, start = false) => {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    let startTime = null;
-    const numericEnd = parseInt(end);
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * numericEnd));
-      if (progress < 1) requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(animate);
-  }, [start, end, duration]);
-  return count;
-};
-
 const Hero = () => {
   const heroRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -28,9 +10,9 @@ const Hero = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    // Delay 3D canvas load for faster initial paint
+    // Delay 3D canvas load — show on all viewports
     const timer = setTimeout(() => {
-      if (window.innerWidth >= 768) setShowCanvas(true);
+      setShowCanvas(true);
     }, 500);
     return () => clearTimeout(timer);
   }, []);
@@ -52,13 +34,6 @@ const Hero = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  const stats = [
-    { value: '5', suffix: '+', label: 'Years Experience' },
-    { value: '50', suffix: '+', label: 'Projects Completed' },
-    { value: '30', suffix: '+', label: 'Happy Clients' },
-    { value: '100', suffix: '%', label: 'Satisfaction' }
-  ];
 
   return (
     <section
@@ -86,7 +61,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* 3D Floating Shape — lazy loaded, hidden on mobile */}
+      {/* 3D Floating Shape — lazy loaded, renders on all viewports */}
       {showCanvas && (
         <Suspense fallback={null}>
           <FloatingShape />
@@ -141,13 +116,6 @@ const Hero = () => {
             </svg>
           </a>
         </div>
-
-        {/* Animated Stats */}
-        <div className={`mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 ${isVisible ? 'animate-fade-up delay-500' : 'opacity-0'}`}>
-          {stats.map((stat, index) => (
-            <StatItem key={index} stat={stat} isVisible={isVisible} delay={index * 150} />
-          ))}
-        </div>
       </div>
 
       {/* Scroll Indicator */}
@@ -157,27 +125,6 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const StatItem = ({ stat, isVisible, delay }) => {
-  const [startCount, setStartCount] = useState(false);
-  const count = useCountUp(stat.value, 2000, startCount);
-
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => setStartCount(true), delay + 600);
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, delay]);
-
-  return (
-    <div className="text-center">
-      <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent mb-2">
-        {count}{stat.suffix}
-      </div>
-      <div className="text-xs sm:text-sm text-zinc-500">{stat.label}</div>
-    </div>
   );
 };
 

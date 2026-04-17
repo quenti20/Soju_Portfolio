@@ -1,8 +1,8 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial } from '@react-three/drei';
 
-const AnimatedShape = () => {
+const AnimatedShape = ({ isMobile }) => {
   const meshRef = useRef();
 
   useFrame((state) => {
@@ -14,8 +14,8 @@ const AnimatedShape = () => {
 
   return (
     <Float speed={1.5} rotationIntensity={0.4} floatIntensity={1.2}>
-      <mesh ref={meshRef} scale={1.8}>
-        <torusKnotGeometry args={[1, 0.35, 128, 32]} />
+      <mesh ref={meshRef} scale={isMobile ? 1.2 : 1.8}>
+        <torusKnotGeometry args={isMobile ? [1, 0.35, 64, 16] : [1, 0.35, 128, 32]} />
         <MeshDistortMaterial
           color="#7c3aed"
           roughness={0.2}
@@ -30,9 +30,9 @@ const AnimatedShape = () => {
   );
 };
 
-const Particles = () => {
+const Particles = ({ isMobile }) => {
   const particlesRef = useRef();
-  const count = 60;
+  const count = isMobile ? 30 : 60;
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -42,7 +42,7 @@ const Particles = () => {
       pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
     }
     return pos;
-  }, []);
+  }, [count]);
 
   useFrame((state) => {
     if (particlesRef.current) {
@@ -62,7 +62,7 @@ const Particles = () => {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.03}
+        size={isMobile ? 0.04 : 0.03}
         color="#a855f7"
         transparent
         opacity={0.6}
@@ -73,20 +73,29 @@ const Particles = () => {
 };
 
 const FloatingShape = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
     <div className="absolute inset-0 z-[1] pointer-events-none opacity-80">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 45 }}
-        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
-        dpr={[1, 1.5]}
+        gl={{ alpha: true, antialias: !isMobile, powerPreference: 'high-performance' }}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.3} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} color="#a855f7" />
         <directionalLight position={[-3, -3, 2]} intensity={0.4} color="#7c3aed" />
         <pointLight position={[0, 0, 4]} intensity={0.5} color="#c084fc" />
-        <AnimatedShape />
-        <Particles />
+        <AnimatedShape isMobile={isMobile} />
+        <Particles isMobile={isMobile} />
       </Canvas>
     </div>
   );
