@@ -86,6 +86,9 @@ const About = () => {
             {/* Resume Button */}
             <a
               href={data.personal.resumeLink}
+              download="Soujanya_roy_resume.pdf" // Add this line
+              target="_blank" // Add this line as a fallback
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 text-white font-medium rounded-full hover:border-zinc-500 hover:bg-white/5 transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
